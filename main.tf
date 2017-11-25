@@ -42,8 +42,8 @@ resource "aws_ecs_service" "mongo-service" {
 
 resource "aws_route53_record" "website_route53_record" {
   zone_id = "${var.zone_id}"
-  name = "mongo.auth.dev"
-  type = "CNAME"
+  name    = "mongo.${var.service_name}.${var.environment}"
+  type    = "CNAME"
   ttl     = "300"
   records = ["${var.cluster_ec2_private_dns}"]
 }
