@@ -1,0 +1,52 @@
+[
+  {
+    "name": "${container_name}",
+    "image": "registry.gitlab.com/particle4dev/docker-mongo:mongo-3.4.10",
+    "memory": 224,
+    "cpu": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "hostPort": 27017,
+        "containerPort": 27017,
+        "protocol": "tcp"
+      }
+    ],
+    "command": [],
+    "environment": [
+      {
+        "name": "MONGO_INITDB_ROOT_USERNAME",
+        "value": "admin"
+      },
+      {
+        "name": "MONGO_INITDB_ROOT_PASSWORD",
+        "value": "${root_password}"
+      },
+      {
+        "name": "MONGO_INITDB_USERNAME",
+        "value": "snail"
+      },
+      {
+        "name": "MONGO_INITDB_PASSWORD",
+        "value": "${init_password}"
+      },
+      {
+        "name": "MONGO_INITDB_DATABASE",
+        "value": "tests"
+      }
+    ],
+    "mountPoints": [{
+      "sourceVolume": "data",
+      "containerPath": "/data/db",
+      "readOnly": false
+    }],
+    "volumesFrom": null,
+    "hostname": null,
+    "user": null,
+    "workingDirectory": null,
+    "extraHosts": null,
+    "logConfiguration": null,
+    "ulimits": null,
+    "dockerLabels": null
+  }
+]
